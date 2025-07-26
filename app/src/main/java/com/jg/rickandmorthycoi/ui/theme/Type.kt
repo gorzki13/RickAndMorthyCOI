@@ -1,4 +1,4 @@
-package com.JG.rickandmorthycoi.ui.theme
+package com.jg.rickandmorthycoi.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

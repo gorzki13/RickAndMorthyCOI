@@ -1,4 +1,4 @@
-package com.JG.rickandmorthycoi
+package com.jg.rickandmorthycoi
 
 import org.junit.Test
 
