@@ -3,9 +3,12 @@ package com.jg.rickandmorthycoi.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 
 import androidx.compose.material3.Text
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -32,7 +35,10 @@ fun CharacterListItem(
                     .size(64.dp)
                     .padding(end = 16.dp)
             )
-            Text(text = character.name)
+            Text(text = character.name, modifier = Modifier.weight(1f))
+            if (character.isFavorite) {
+                Icon(Icons.Filled.Favorite, contentDescription = "Ulubione")
+            }
         }
     }
 }

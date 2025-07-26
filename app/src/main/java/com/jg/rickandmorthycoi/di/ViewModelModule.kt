@@ -1,18 +1,26 @@
+// app/src/main/java/com/jg/rickandmorthycoi/di/ViewModelModule.kt
 package com.jg.rickandmorthycoi.di
 
-import com.jg.rickandmorthycoi.ui.detail.CharacterDetailViewModel
 import com.jg.rickandmorthycoi.ui.list.CharacterListViewModel
+import com.jg.rickandmorthycoi.ui.detail.CharacterDetailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { CharacterListViewModel(get()) }
+
+    viewModel {
+        CharacterListViewModel(
+            getCharacters = get(),
+            getFavoriteIds = get()
+        )
+    }
 
 
     viewModel { (characterId: Int) ->
         CharacterDetailViewModel(
-            getDetails = get(),
-            toggleFavorite = get()
+            getDetails       = get(),
+            getFavoriteIds   = get(),
+            toggleFavorite   = get()
         ).apply {
             init(characterId)
         }

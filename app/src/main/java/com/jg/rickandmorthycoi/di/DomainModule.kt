@@ -11,4 +11,5 @@ val domainModule = module {
     factory { GetCharacterDetailsUseCase(get()) }
     factory { ToggleFavoriteUseCase(get()) }
     factory { GetFavoriteIdsUseCase(get()) }
+
 }

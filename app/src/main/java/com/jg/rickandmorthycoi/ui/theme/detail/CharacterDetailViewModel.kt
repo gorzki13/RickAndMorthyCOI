@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jg.rickandmorthycoi.domain.model.CharacterDetail
 import com.jg.rickandmorthycoi.domain.usecase.GetCharacterDetailsUseCase
+import com.jg.rickandmorthycoi.domain.usecase.GetFavoriteIdsUseCase
 import com.jg.rickandmorthycoi.domain.usecase.ToggleFavoriteUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,6 +19,7 @@ sealed class CharacterDetailUiState {
 
 class CharacterDetailViewModel(
     private val getDetails: GetCharacterDetailsUseCase,
+    private val getFavoriteIds: GetFavoriteIdsUseCase,
     private val toggleFavorite: ToggleFavoriteUseCase
 ) : ViewModel() {
 
@@ -42,7 +44,6 @@ class CharacterDetailViewModel(
             when (val state = _uiState.value) {
                 is CharacterDetailUiState.Success -> {
                     toggleFavorite(state.detail.id)
-                    // odśwież flagę
                     val newFav = !_uiState.value.let { (it as CharacterDetailUiState.Success).isFavorite }
                     _uiState.value = state.copy(isFavorite = newFav)
                 }

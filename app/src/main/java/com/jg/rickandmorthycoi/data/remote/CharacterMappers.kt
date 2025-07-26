@@ -8,7 +8,8 @@ fun CharacterDto.toDomain(): Character =
     Character(
         id = this.id,
         name = this.name,
-        imageUrl = this.image
+        imageUrl = this.image,
+        isFavorite = false
     )
 
 
