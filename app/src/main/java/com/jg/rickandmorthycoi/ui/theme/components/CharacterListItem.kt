@@ -68,7 +68,7 @@ fun CharacterListItem(
                 Spacer(Modifier.weight(1f))
                 Icon(
                     imageVector = if (character.isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                    contentDescription = if (character.isFavorite) "Usuń z ulubionych" else "Dodaj do ulubionych",
+                    contentDescription = if (character.isFavorite) "Delete from favs" else "Add to favs",
                     tint = if (character.isFavorite)
                         MaterialTheme.colorScheme.secondary
                     else

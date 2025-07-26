@@ -172,7 +172,7 @@ fun CharacterDetailScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            "Ups: ${(uiState as CharacterDetailUiState.Error).message}",
+                            stringResource(R.string.sth_went_wrong),
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Spacer(Modifier.height(12.dp))
