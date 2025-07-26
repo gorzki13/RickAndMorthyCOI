@@ -29,7 +29,6 @@ fun NavGraph() {
             arguments = listOf(navArgument("characterId") { type = NavType.IntType })
         ) { backStackEntry ->
             val characterId = backStackEntry.arguments?.getInt("characterId") ?: return@composable
-            // Pobieramy ViewModel, przekazując characterId jako parameter
             val detailVm: CharacterDetailViewModel = getViewModel(
                 parameters = { parametersOf(characterId) }
             )

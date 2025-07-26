@@ -1,4 +1,3 @@
-// app/src/main/java/com/jg/rickandmorthycoi/di/ViewModelModule.kt
 package com.jg.rickandmorthycoi.di
 
 import com.jg.rickandmorthycoi.ui.list.CharacterListViewModel

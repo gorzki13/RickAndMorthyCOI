@@ -28,17 +28,13 @@ class CharacterListViewModel(
         fetchCharacters()
     }
 
-    /**
-     * Pobiera listę, subskrybuje ulubione i aktualizuje UI.
-     */
+
     fun fetchCharacters() {
         viewModelScope.launch {
             _uiState.value = CharacterListUiState.Loading
             try {
-                // Pobranie podstawowej listy postaci
                 val chars = getCharacters()
 
-                // Połączenie z listą ulubionych ID
                 getFavoriteIds()
                     .map { favIds ->
                         chars.map { c ->
@@ -50,7 +46,7 @@ class CharacterListViewModel(
                     }
             } catch (e: Exception) {
                 _uiState.value = CharacterListUiState.Error(
-                    e.localizedMessage ?: "Nieznany błąd podczas ładowania postaci"
+                    e.localizedMessage ?: "\n" + "Unknown error while loading character"
                 )
             }
         }

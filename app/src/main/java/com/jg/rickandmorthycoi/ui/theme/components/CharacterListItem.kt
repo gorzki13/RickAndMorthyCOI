@@ -34,7 +34,6 @@ fun CharacterListItem(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            // Duże zdjęcie na całą szerokość
             AsyncImage(
                 model = character.imageUrl,
                 contentDescription = character.name,
@@ -46,7 +45,6 @@ fun CharacterListItem(
 
             Spacer(Modifier.height(12.dp))
 
-            // Opis / nagłówek
             Text(
                 text = character.name,
                 style = MaterialTheme.typography.headlineSmall,
