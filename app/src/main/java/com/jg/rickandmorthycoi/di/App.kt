@@ -13,7 +13,7 @@ class App : Application() {
             modules(
                 listOf(
                     networkModule,
-              //      dataStoreModule,
+                  dataStoreModule,
                     repositoryModule,
                     domainModule,
                     viewModelModule

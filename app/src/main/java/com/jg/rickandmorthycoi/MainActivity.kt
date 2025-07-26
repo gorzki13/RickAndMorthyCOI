@@ -4,12 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.jg.rickandmorthycoi.di.dataStoreModule
 import com.jg.rickandmorthycoi.di.domainModule
 import com.jg.rickandmorthycoi.di.networkModule
 import com.jg.rickandmorthycoi.di.repositoryModule
 import com.jg.rickandmorthycoi.di.viewModelModule
 import com.jg.rickandmorthycoi.navigation.NavGraph
-import com.jg.rickandmorthycoi.ui.list.CharacterListScreen
 import com.jg.rickandmorthycoi.ui.theme.RickAndMorthyCOITheme
 import org.koin.core.context.startKoin
 import org.koin.android.ext.koin.androidContext
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
             modules(
                 listOf(
                     networkModule,
-                    // dataStoreModule,
+                     dataStoreModule,
                     repositoryModule,
                     domainModule,
                     viewModelModule
