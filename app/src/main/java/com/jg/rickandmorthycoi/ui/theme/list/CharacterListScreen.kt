@@ -16,7 +16,8 @@ import org.koin.androidx.compose.getViewModel
 import androidx.compose.foundation.lazy.items
 @Composable
 fun CharacterListScreen(
-    viewModel: CharacterListViewModel = getViewModel()
+    viewModel: CharacterListViewModel = getViewModel(),
+    onCharacterClick: (Int) -> Unit
 ) {
     val uiState = viewModel.uiState.collectAsState().value
 
@@ -29,7 +30,7 @@ fun CharacterListScreen(
         is CharacterListUiState.Success -> {
             LazyColumn {
                 items(uiState.characters) { char ->
-                    CharacterListItem(character = char, onClick = { /* póki co pusta akcja */ })
+                    CharacterListItem(character = char, onClick = { onCharacterClick(char.id) })
                 }
             }
         }

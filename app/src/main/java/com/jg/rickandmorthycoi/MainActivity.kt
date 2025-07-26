@@ -8,6 +8,7 @@ import com.jg.rickandmorthycoi.di.domainModule
 import com.jg.rickandmorthycoi.di.networkModule
 import com.jg.rickandmorthycoi.di.repositoryModule
 import com.jg.rickandmorthycoi.di.viewModelModule
+import com.jg.rickandmorthycoi.navigation.NavGraph
 import com.jg.rickandmorthycoi.ui.list.CharacterListScreen
 import com.jg.rickandmorthycoi.ui.theme.RickAndMorthyCOITheme
 import org.koin.core.context.startKoin
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RickAndMorthyCOITheme {
-                CharacterListScreen()
+                NavGraph()
             }
         }
     }
