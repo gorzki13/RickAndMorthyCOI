@@ -4,44 +4,37 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.jg.rickandmorthycoi.di.domainModule
+import com.jg.rickandmorthycoi.di.networkModule
+import com.jg.rickandmorthycoi.di.repositoryModule
+import com.jg.rickandmorthycoi.di.viewModelModule
+import com.jg.rickandmorthycoi.ui.list.CharacterListScreen
 import com.jg.rickandmorthycoi.ui.theme.RickAndMorthyCOITheme
+import org.koin.core.context.startKoin
+import org.koin.android.ext.koin.androidContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        startKoin {
+            androidContext(this@MainActivity)
+            modules(
+                listOf(
+                    networkModule,
+                    // dataStoreModule,
+                    repositoryModule,
+                    domainModule,
+                    viewModelModule
+                )
+            )
+        }
+
         enableEdgeToEdge()
         setContent {
             RickAndMorthyCOITheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                CharacterListScreen()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RickAndMorthyCOITheme {
-        Greeting("Android")
     }
 }

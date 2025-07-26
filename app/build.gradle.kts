@@ -56,4 +56,36 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // === Compose & Navigation ===
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.material3)
+    implementation(libs.navigation.compose)
+
+    // === Coroutines ===
+    implementation(libs.kotlinx.coroutines.android)
+
+    // === Networking ===
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.okhttp.logging)
+
+    // === DataStore ===
+    implementation(libs.datastore.preferences)
+
+    // === Koin ===
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
+    // === ViewModel w Compose ===
+    implementation(libs.lifecycle.viewmodel.compose)
+
+    // === Testy ===
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.mockwebserver)
+
+    implementation(libs.coil.compose)
 }
