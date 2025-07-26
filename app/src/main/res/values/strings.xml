@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RickAndMorthyCOI</string>
+    <string name="details">Details</string>
+    <string name="back">Back</string>
+    <string name="origins">Origin: %1$s</string>
+    <string name="created___years_ago">Created %1$s years ago</string>
+    <string name="episodes">Episodes</string>
+    <string name="retry">Retry</string>
 </resources>

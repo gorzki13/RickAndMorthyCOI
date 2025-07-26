@@ -22,8 +22,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.jg.rickandmorthycoi.R
 import com.jg.rickandmorthycoi.ui.detail.CharacterDetailUiState
 import com.jg.rickandmorthycoi.ui.detail.CharacterDetailViewModel
 import org.koin.androidx.compose.getViewModel
@@ -40,10 +42,12 @@ fun CharacterDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Szczegóły", style = MaterialTheme.typography.titleLarge) },
+                title = { Text(stringResource(R.string.details), style = MaterialTheme.typography.titleLarge) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Powrót")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(
+                            R.string.back
+                        ))
                     }
                 }
             )
@@ -71,7 +75,6 @@ fun CharacterDetailScreen(
                         elevation = CardDefaults.cardElevation(12.dp)
                     ) {
                         Column(Modifier.fillMaxSize()) {
-                            // Obrazek
                             AsyncImage(
                                 model = data.detail.imageUrl,
                                 contentDescription = data.detail.name,
@@ -83,7 +86,6 @@ fun CharacterDetailScreen(
 
                             Spacer(Modifier.height(16.dp))
 
-                            // Duży nagłówek
                             Text(
                                 text = data.detail.name,
                                 style = MaterialTheme.typography.displayLarge,
@@ -92,7 +94,6 @@ fun CharacterDetailScreen(
 
                             Spacer(Modifier.height(8.dp))
 
-                            // Podtytuł
                             Text(
                                 text = "${data.detail.status} • ${data.detail.gender}",
                                 style = MaterialTheme.typography.titleMedium,
@@ -110,13 +111,16 @@ fun CharacterDetailScreen(
 
                             Spacer(Modifier.height(6.dp))
                             Text(
-                                text = "Pochodzenie: ${data.detail.originName}",
+                                text = stringResource(R.string.origins, data.detail.originName),
                                 style = MaterialTheme.typography.bodyLarge,
                                 modifier = Modifier.padding(horizontal = 24.dp)
                             )
                             Spacer(Modifier.height(6.dp))
                             Text(
-                                text = "Utworzony ${data.detail.createdYearsAgo} lat temu",
+                                text = stringResource(
+                                    R.string.created___years_ago,
+                                    data.detail.createdYearsAgo
+                                ),
                                 style = MaterialTheme.typography.bodyLarge,
                                 modifier = Modifier.padding(horizontal = 24.dp)
                             )
@@ -124,7 +128,7 @@ fun CharacterDetailScreen(
                             Spacer(Modifier.height(16.dp))
 
                             Text(
-                                text = "Odcinki",
+                                text = stringResource(R.string.episodes),
                                 style = MaterialTheme.typography.titleLarge,
                                 modifier = Modifier.padding(horizontal = 24.dp)
                             )
@@ -138,7 +142,6 @@ fun CharacterDetailScreen(
 
                             Spacer(Modifier.weight(1f))
 
-                            // Serce na dole
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -174,7 +177,7 @@ fun CharacterDetailScreen(
                         )
                         Spacer(Modifier.height(12.dp))
                         Button(onClick = { viewModel.init(characterId) }) {
-                            Text("Ponów", style = MaterialTheme.typography.titleMedium)
+                            Text(stringResource(R.string.retry), style = MaterialTheme.typography.titleMedium)
                         }
                     }
                 }
