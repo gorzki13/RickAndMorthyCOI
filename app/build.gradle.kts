@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.JG.rickandmorthycoi"
+    namespace = "com.jg.rickandmorthycoi"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.JG.rickandmorthycoi"
+        applicationId = "com.jg.rickandmorthycoi"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
