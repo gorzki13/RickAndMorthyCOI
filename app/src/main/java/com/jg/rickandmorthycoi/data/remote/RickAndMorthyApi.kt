@@ -23,7 +23,7 @@ data class CharacterDetailDto(
 
 data class CharactersResponseDto(val results: List<CharacterDto>)
 
-data class CharacterDto(val id: Int, val name: String, val image: String)
+data class CharacterDto(val id: Int, val name: String, val image: String,  val episode: List<String> )
 
 interface RickAndMortyApi {
 

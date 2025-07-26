@@ -9,7 +9,8 @@ fun CharacterDto.toDomain(): Character =
         id = this.id,
         name = this.name,
         imageUrl = this.image,
-        isFavorite = false
+        isFavorite = false,
+        episodesCount = episode.size
     )
 
 

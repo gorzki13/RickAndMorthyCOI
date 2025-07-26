@@ -51,7 +51,11 @@ fun CharacterListItem(
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
 
-
+            Text(
+                text = "${character.episodesCount} episodes",
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
 
             Spacer(Modifier.height(16.dp))
 
