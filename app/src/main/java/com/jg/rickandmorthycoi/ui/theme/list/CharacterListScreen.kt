@@ -13,6 +13,9 @@ import androidx.compose.ui.unit.dp
 import com.jg.rickandmorthycoi.ui.components.CharacterListItem
 import org.koin.androidx.compose.getViewModel
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.res.stringResource
+import com.jg.rickandmorthycoi.R
+
 @Composable
 fun CharacterListScreen(
     viewModel: CharacterListViewModel = getViewModel(),
@@ -36,10 +39,10 @@ fun CharacterListScreen(
         is CharacterListUiState.Error -> {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("Ups: ${uiState.message}")
+                    Text(stringResource(R.string.sth_went_wrong))
                     Spacer(Modifier.height(8.dp))
                     Button(onClick = { viewModel.fetchCharacters() }) {
-                        Text("Ponów")
+                        Text(stringResource(R.string.Retry))
                     }
                 }
             }

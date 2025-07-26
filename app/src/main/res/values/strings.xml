@@ -6,4 +6,6 @@
     <string name="created___years_ago">Created %1$s years ago</string>
     <string name="episodes">Episodes</string>
     <string name="retry">Retry</string>
+    <string name="Retry">Retry</string>
+    <string name="sth_went_wrong">Oops, something went wrong</string>
 </resources>
