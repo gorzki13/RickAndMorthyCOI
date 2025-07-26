@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.jg.rickandmorthycoi.ui.detail.CharacterDetailScreen
+import com.jg.rickandmorthycoi.ui.theme.detail.CharacterDetailScreen
 import com.jg.rickandmorthycoi.ui.detail.CharacterDetailViewModel
 
 import com.jg.rickandmorthycoi.ui.list.CharacterListScreen
