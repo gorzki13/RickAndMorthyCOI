@@ -28,6 +28,7 @@ import coil.compose.AsyncImage
 import com.jg.rickandmorthycoi.R
 import com.jg.rickandmorthycoi.ui.detail.CharacterDetailUiState
 import com.jg.rickandmorthycoi.ui.detail.CharacterDetailViewModel
+import com.jg.rickandmorthycoi.ui.theme.components.CharacterDetailCard
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,12 +43,18 @@ fun CharacterDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.details), style = MaterialTheme.typography.titleLarge) },
+                title = {
+                    Text(
+                        stringResource(R.string.details),
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(
-                            R.string.back
-                        ))
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.back)
+                        )
                     }
                 }
             )
@@ -65,103 +72,10 @@ fun CharacterDetailScreen(
                     }
                 }
                 is CharacterDetailUiState.Success -> {
-                    val data = uiState as CharacterDetailUiState.Success
-
-                    Card(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp),
-                        shape = RoundedCornerShape(24.dp),
-                        elevation = CardDefaults.cardElevation(12.dp)
-                    ) {
-                        Column(Modifier.fillMaxSize()) {
-                            AsyncImage(
-                                model = data.detail.imageUrl,
-                                contentDescription = data.detail.name,
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(300.dp)
-                            )
-
-                            Spacer(Modifier.height(16.dp))
-
-                            Text(
-                                text = data.detail.name,
-                                style = MaterialTheme.typography.displayLarge,
-                                modifier = Modifier.padding(horizontal = 24.dp)
-                            )
-
-                            Spacer(Modifier.height(8.dp))
-
-                            Text(
-                                text = "${data.detail.status} • ${data.detail.gender}",
-                                style = MaterialTheme.typography.titleMedium,
-                                modifier = Modifier.padding(horizontal = 24.dp)
-                            )
-
-                            data.detail.type?.let {
-                                Spacer(Modifier.height(6.dp))
-                                Text(
-                                    text = it,
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    modifier = Modifier.padding(horizontal = 24.dp)
-                                )
-                            }
-
-                            Spacer(Modifier.height(6.dp))
-                            Text(
-                                text = stringResource(R.string.origins, data.detail.originName),
-                                style = MaterialTheme.typography.bodyLarge,
-                                modifier = Modifier.padding(horizontal = 24.dp)
-                            )
-                            Spacer(Modifier.height(6.dp))
-                            Text(
-                                text = stringResource(
-                                    R.string.created___years_ago,
-                                    data.detail.createdYearsAgo
-                                ),
-                                style = MaterialTheme.typography.bodyLarge,
-                                modifier = Modifier.padding(horizontal = 24.dp)
-                            )
-
-                            Spacer(Modifier.height(16.dp))
-
-                            Text(
-                                text = stringResource(R.string.episodes),
-                                style = MaterialTheme.typography.titleLarge,
-                                modifier = Modifier.padding(horizontal = 24.dp)
-                            )
-                            data.detail.episodeUrls.take(5).forEach { url ->
-                                Text(
-                                    text = "• ${url.substringAfterLast("/")}",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    modifier = Modifier.padding(start = 32.dp, end = 24.dp, top = 4.dp)
-                                )
-                            }
-
-                            Spacer(Modifier.weight(1f))
-
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(24.dp),
-                                horizontalArrangement = Arrangement.End
-                            ) {
-                                Icon(
-                                    imageVector = if (data.isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                                    contentDescription = null,
-                                    tint = if (data.isFavorite)
-                                        MaterialTheme.colorScheme.secondary
-                                    else
-                                        MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier
-                                        .size(36.dp)
-                                        .clickable { viewModel.onToggleFavorite() }
-                                )
-                            }
-                        }
-                    }
+                    CharacterDetailCard(
+                        detail = uiState as CharacterDetailUiState.Success,
+                        onToggleFavorite = { viewModel.onToggleFavorite() }
+                    )
                 }
                 is CharacterDetailUiState.Error -> {
                     Column(
@@ -177,7 +91,10 @@ fun CharacterDetailScreen(
                         )
                         Spacer(Modifier.height(12.dp))
                         Button(onClick = { viewModel.init(characterId) }) {
-                            Text(stringResource(R.string.retry), style = MaterialTheme.typography.titleMedium)
+                            Text(
+                                stringResource(R.string.retry),
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
                     }
                 }
