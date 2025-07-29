@@ -39,7 +39,7 @@ class CharacterListViewModel(
                     .map { favIds ->
                         chars.map { c ->
                             c.copy(isFavorite = favIds.contains(c.id))
-                        }
+                        }.sortedBy { it.name }
                     }
                     .collect { updatedList ->
                         _uiState.value = CharacterListUiState.Success(updatedList)
